@@ -16,8 +16,8 @@ export class UsersService {
     return `This action returns a #${id} user`;
   }
 
-  update(nickname: string, updateUserDto: UpdateUserDto) {
-    return `This action updates user's ${nickname}`;
+  update(id: number, updateUserDto: UpdateUserDto) {
+    return `This action updates a #${id} user`;
   }
 
   remove(id: number) {

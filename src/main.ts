@@ -6,10 +6,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('FT_Transcendence')
-    .setDescription('Transcendence API Documentation')
+    .setTitle('FT_transcendence')
+    .setDescription('FT_transcendence API Documentation')
     .setVersion('1.0')
-    .addTag('42seoul')
+    .addTag('42Seoul')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

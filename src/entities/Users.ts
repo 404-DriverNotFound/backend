@@ -5,20 +5,20 @@ import {
   DeleteDateColumn,
   Entity,
   Index,
-  JoinTable,
-  ManyToMany,
+  // JoinTable,
+  // ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { ChannelChats } from './ChannelChats';
 import { ChannelMembers } from './ChannelMembers';
-import { Channels } from './Channels';
 import { DMs } from './DMs';
-import { Mentions } from './Mentions';
-import { WorkspaceMembers } from './WorkspaceMembers';
-import { Workspaces } from './Workspaces';
 import { IsEmail, IsString, IsNotEmpty } from 'class-validator';
+// import { Channels } from './Channels';
+// import { Mentions } from './Mentions';
+// import { WorkspaceMembers } from './WorkspaceMembers';
+// import { Workspaces } from './Workspaces';
 
 @Index('email', ['email'], { unique: true })
 @Entity({ schema: 'amin_db', name: 'users' })
@@ -73,46 +73,40 @@ export class Users {
   @OneToMany(() => DMs, (dms) => dms.Receiver)
   DMs2: DMs[];
 
-  @OneToMany(() => Mentions, (mentions) => mentions.Sender)
-  Mentions: Mentions[];
+//   @OneToMany(
+//     () => WorkspaceMembers,
+//     (workspacemembers) => workspacemembers.User,
+//   )
+//   WorkspaceMembers: WorkspaceMembers[];
 
-  @OneToMany(() => Mentions, (mentions) => mentions.Receiver)
-  Mentions2: Mentions[];
+//   @OneToMany(() => Workspaces, (workspaces) => workspaces.Owner)
+//   OwnedWorkspaces: Workspaces[];
 
-  @OneToMany(
-    () => WorkspaceMembers,
-    (workspacemembers) => workspacemembers.User,
-  )
-  WorkspaceMembers: WorkspaceMembers[];
+//   @ManyToMany(() => Workspaces, (workspaces) => workspaces.Members)
+//   @JoinTable({
+//     name: 'workspacemembers',
+//     joinColumn: {
+//       name: 'UserId',
+//       referencedColumnName: 'id',
+//     },
+//     inverseJoinColumn: {
+//       name: 'WorkspaceId',
+//       referencedColumnName: 'id',
+//     },
+//   })
+//   Workspaces: Workspaces[];
 
-  @OneToMany(() => Workspaces, (workspaces) => workspaces.Owner)
-  OwnedWorkspaces: Workspaces[];
-
-  @ManyToMany(() => Workspaces, (workspaces) => workspaces.Members)
-  @JoinTable({
-    name: 'workspacemembers',
-    joinColumn: {
-      name: 'UserId',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'WorkspaceId',
-      referencedColumnName: 'id',
-    },
-  })
-  Workspaces: Workspaces[];
-
-  @ManyToMany(() => Channels, (channels) => channels.Members)
-  @JoinTable({
-    name: 'channelmembers',
-    joinColumn: {
-      name: 'UserId',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'ChannelId',
-      referencedColumnName: 'id',
-    },
-  })
-  Channels: Channels[];
-}
+//   @ManyToMany(() => Channels, (channels) => channels.Members)
+//   @JoinTable({
+//     name: 'channelmembers',
+//     joinColumn: {
+//       name: 'UserId',
+//       referencedColumnName: 'id',
+//     },
+//     inverseJoinColumn: {
+//       name: 'ChannelId',
+//       referencedColumnName: 'id',
+//     },
+//   })
+//   Channels: Channels[];
+// }
